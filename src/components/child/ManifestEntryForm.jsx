@@ -577,183 +577,152 @@ function handleChange4(e) {
   return (
     <div>
     <div className="col-lg-12">
-    <div className="card">
-    <div className="card-header d-flex justify-content-between align-items-center">
-    <h5 className="card-title mb-0">Bilty(Goods) Entry</h5>
-   
-  </div>
-  <div className="card-body">
-  <form className="row gy-3 needs-validation" noValidate onSubmit={e => e.preventDefault()}>
-  <div className="col-md-2">
-        <label className="form-label">Bilty No *</label>
-        <input type="text" className="form-control" 
-          value={BiltyNo}
-          onChange={(e) => setBiltyNo(e.target.value)}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-         required readOnly/>
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Date *</label>
-        {/* <input type="date" className="form-control" 
-          value={BiltyDate} 
-         onChange={(e) => setBiltyDate(e.target.value)}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-        required /> */}
-        <DatePicker dateFormat="dd/MM/yyyy" disabled={issueDateDisable} className="form-control" selected={BiltyDate} onChange={date => {setBiltyDate(date);}} />
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Vehicle *</label>
-        <select className="form-select" id="goods_vehicle" 
-        value={BVehicle}
-        onChange={(e) => setBVehicle(e.target.value)}
-        required>
-        </select>
-      </div>
-      <div className="col-md-3">
-        <label className="form-label">Loading Points *</label>
-        <input type="text" className="form-control"
-          value={loading}
-          onChange={(e) => setloading(e.target.value)}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-         required />
-      </div>
-      <div className="col-md-3">
-        <label className="form-label">Un-Loading Points *</label>
-        <input type="text" className="form-control" 
-          value={unloading}
-          onChange={(e) => setunloading(e.target.value)}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-        required />
-      </div>
-
-      <div className="col-md-3">
-        <label className="form-label">Parties *</label>
-
-        <select className="form-select" disabled={selectDisable} id="goods_party_1" value={Bparty} onChange={(e) => setBparty(e.target.value)} required>
-        </select>
-      </div>
-
-      <div className="col-md-2">
-            <label className="form-label">Weight (kg)</label>
-            <input type="number" className="form-control"
-              value={Bweight}
-              onChange={handleChange}
-             required />
-          </div>
-
-          <div className="col-md-2">
-            <label className="form-label">Per/Ton</label>
-            <input type="number" className="form-control"
-              value={BPerTon}
-              onChange= {handleChange2}
-              onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-             required />
-          </div>
-
-          <div className="col-md-2" >
-        <label className="form-label">Tax Rate(%)</label>
-        <input type="number" className="form-control" id="input_gst"
-              value={Goods_GST}
-              onChange= {handleChange5}
-              onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-             required />
-      </div>
-
-          <div className="col-md-2">
-        <label className="form-label">Freight Amount(Rs)</label>
-        <input type="number" className="form-control" pattern='d\+\.\d\d$'
-         value= {BFreight}
-         onChange={(e) => setBFreight(e.target.value)}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-         required readOnly/>
-      </div>
-        <div className="col-md-2">
-        <label className="form-label">WHT (%)</label>
-        <input type="number" className="form-control" pattern='d\+\.\d\d$'
-          value={BWRT4Rate}
-          onChange={handleChange8}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-          required/>
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">WHT Amt(Rs)</label>
-        <input type="number" className="form-control" pattern='d\+\.\d\d$'
-          value={BWRT4Freight}
-          onChange={(e) => setBWRT4Freight(e.target.value)}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-          required readOnly/>
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Comm(%)</label>
-        <input type="number" className="form-control" pattern='d\+\.\d\d$'
-          value={BCommRate}
-          onChange={handleChange4}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-          required/>
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Commission Amount(Rs)</label>
-        <input type="number" className="form-control"
-          value={BComm} 
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-         required readOnly/>
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Other Charges(Rs)*</label>
-        <input type="number" className="form-control" 
-          value={BOtherCharges}
-          onChange={handleChange7}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-        required />
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Vehicle Freight (Rs) *</label>
-        <input type="number" className="form-control" 
-          value={BvehicleFreight}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-         required readOnly/>
-      </div>
-      <div className="col-md-2">
-        <label className="form-label">Advance To Vehicle (Rs)</label>
-        <input type="number" className="form-control" 
-          value={BvehicleAdvance}
-          onChange={handleChange6}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}} 
-        required/>
-      </div>
-      <div className="col-md-3" hidden={paidhidden}>
-              <label className="form-label">Paid By *</label>
-              <select 
-                className="form-select"
-                value={paid_Method}
-                onChange={(e) => setpaid_Method(e.target.value)}
-                required
-              >
-                    <option value="Cash">Cash</option>
-                    <option value="Bank">Bank</option>
-                    <option value="Bank">Cheque</option>
-                    <option value="Digital Wallet">Digital Wallet</option>
-              </select>
+       <div className="card mb-4">
+            <div className="card-header">
+              <h5 className="card-title mb-0">Bilty (Goods) Entry</h5>
             </div>
-      <div className="col-md-2">
-        <label className="form-label">Vehicle Balance (Rs)</label>
-        <input type="number" className="form-control" 
-          value={BvehicleBal}
-          onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}} 
-         required readOnly/>
-      </div>
-      <div className="col-12 mt-3 d-flex gap-2">
-        <button className="btn btn-primary" id="btcngoodssubmit" onClick={handleSubmit} disabled={!canSubmit}>
-          <Icon icon="mdi:content-save" className="me-1" /> Save
-        </button>
-        <button className="btn btn-secondary" province="button" onClick={handleReset}>
-            <Icon icon="mdi:refresh" className="me-1" /> Reset
-        </button>
-  
-      </div>
-  </form>
-  </div>
-    </div>
+            <div className="card-body">
+              <form
+                className="row gy-3 needs-validation"
+                id="form_bilty_entry"
+                noValidate
+                onSubmit={(e) => e.preventDefault()}
+              >
+                {/* Section: Basic Information */}
+                <div className="col-12">
+                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+                    <Icon icon="mdi:information-outline" className="text-green-600 text-xl" />
+                    Basic Information
+                  </label>
+                </div>
+      
+                <div className="col-md-4">
+                  <label className="form-label">Bilty No *</label>
+                  <input type="text" className="form-control" readOnly />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Date *</label>
+                  <input type="date" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Vehicle *</label>
+                  <select className="form-select">
+                    <option>Select Vehicle</option>
+                  </select>
+                </div>
+                <div className="col-md-6">
+                  <label className="form-label">Loading Points *</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6">
+                  <label className="form-label">Un-Loading Points *</label>
+                  <input type="text" className="form-control" />
+                </div>
+      
+                {/* Section: Party & Weight Details */}
+                <div className="col-12 mt-3">
+                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+                    <Icon icon="mdi:scale-balance" className="text-orange-600 text-xl" />
+                    Party & Weight Details
+                  </label>
+                </div>
+      
+                <div className="col-md-4">
+                  <label className="form-label">Parties *</label>
+                  <select className="form-select">
+                    <option>Select Party</option>
+                  </select>
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Weight (kg)</label>
+                  <input type="number" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Per/Ton *</label>
+                  <input type="number" className="form-control" />
+                </div>
+      
+                {/* Section: Financial Details */}
+                <div className="col-12 mt-3">
+                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+                    <Icon icon="mdi:currency-inr" className="text-purple-600 text-xl" />
+                    Financial Details
+                  </label>
+                </div>
+      
+                <div className="col-md-4">
+                  <label className="form-label">Tax Rate (%)</label>
+                  <input type="number" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Freight Amount (Rs)</label>
+                  <input type="number" className="form-control" readOnly />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">WHT (%)</label>
+                  <input type="number" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">WHT Amount (Rs)</label>
+                  <input type="number" className="form-control" readOnly />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Commission (%)</label>
+                  <input type="number" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Commission Amount (Rs)</label>
+                  <input type="number" className="form-control" readOnly />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Other Charges (Rs)*</label>
+                  <input type="number" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Vehicle Freight (Rs)*</label>
+                  <input type="number" className="form-control" readOnly />
+                </div>
+      
+                {/* Section: Vehicle Payment Details */}
+                <div className="col-12 mt-3">
+                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+                    <Icon icon="mdi:truck-outline" className="text-red-600 text-xl" />
+                    Vehicle Payment Details
+                  </label>
+                </div>
+      
+                <div className="col-md-4">
+                  <label className="form-label">Advance To Vehicle (Rs)</label>
+                  <input type="number" className="form-control" />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Payment Method *</label>
+                  <select className="form-select">
+                    <option>Cash</option>
+                    <option>Bank</option>
+                    <option>Cheque</option>
+                    <option>Digital Wallet</option>
+                  </select>
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Vehicle Balance (Rs)</label>
+                  <input type="number" className="form-control" readOnly />
+                </div>
+      
+                {/* Buttons */}
+                <div className="col-12 d-flex gap-2 mt-3">
+                  <button type="submit" className="btn btn-primary d-flex align-items-center gap-2">
+                    <Icon icon="mdi:content-save" className="text-lg" />
+                    Save 
+                  </button>
+                  <button type="reset" className="btn btn-secondary d-flex align-items-center gap-2">
+                    <Icon icon="mdi:refresh" className="text-lg" />
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
     </div>
     <div className="card basic-data-table">
       <div className="card-header">

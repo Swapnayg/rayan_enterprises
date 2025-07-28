@@ -512,155 +512,185 @@ const CashBookDataTable = () => {
       
   
   return (
-    <div className="col-lg-12">
-    <div className="col-lg-12">
-          <div className="card">
-            <div className="card-header">
-              <h5 className="card-title mb-0">Cash Book Entry</h5>
-            </div>
-            <div className="card-body">
-              <form className="row gy-2 gx-2 align-items-center needs-validation" id="form_cash_bk" noValidate  onSubmit={e => e.preventDefault()}>
-                {/* Date */}
-
-                <div className="col-md-3" id="select_party">
-              <label className="form-label">Select Account *</label>
-              <AsyncSelect  
-      cacheOptions 
-      defaultOptions
-      value={selectedOption}
-      onChange={handleChange}
-      inputValue={inputValue}
-      onInputChange={handleInputChange}
-      loadOptions={loadOptions}
-    />
-            </div>
-            <div className="col-md-2" hidden={hidden}>
-              <label className="form-label">Select Bill</label>
-              <select 
-              id="bill_number"
-                className="form-select"
-                value={bill_no}
-                onChange={handleBillChange}
-                required
-              >   
-              </select>
-            </div>
-                <div className="col-md-2">
-                  <label className="form-label">Date *</label>
-                
-                  <DatePicker dateFormat="dd/MM/yyyy"  className="form-control" id="cash_bk_date" selected={cashbookDate}
-                  onChange={date => { setcashbookDate(date); }} />
-                </div>
-                 <div className="col-md-1" id="select_Type">
-              <label className="form-label">Type *</label>
-              <select 
-                className="form-select"
-                value={acc_Type}
-                onChange={(e) => setacc_Type(e.target.value)}
-                required
-              >
-                    <option value="">Select</option>
-                    <option value="in">IN</option>
-                    <option value="out">OUT</option>
-              </select>
-            </div>
-            <div className="col-md-2">
-              <label className="form-label">Method *</label>
-              <select 
-                className="form-select"
-                value={acc_Method}
-                onChange={(e) => setacc_Method(e.target.value)}
-                required
-              >
-                    <option value="">Select Account</option>
-                    <option value="Cash">Cash</option>
-                    <option value="Bank">Bank</option>
-                    <option value="Bank">Cheque</option>
-                    <option value="Digital Wallet">Digital Wallet</option>
-              </select>
-            </div>
-
-            
-                <div className="col-md-2">
-              <label className="form-label">Amount *</label>
-              <input
-                type="number"
-                className="form-control"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-              />
-            </div>
-    
-                {/* Description */}
-                <div className="col-md-4">
-              <label className="form-label">Account Description *</label>
-             
-              <textarea
-                type="text"
-                className="form-control"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}}
-                required
-              />
-            </div>
-    
-                {/* Action Buttons */}
-                  <div className="col-md-4 d-flex gap-2 align-items-end h-100">
-                  <button className="btn btn-primary w-10" id="btncashsubmit" onClick={handleSubmit} disabled={!canSubmit}>
-                    <Icon icon="mdi:content-save" className="me-1" /> Save
-                  </button>
-                  <button className="btn btn-secondary" province="button" onClick={handleReset} >
-                        <Icon icon="mdi:refresh" className="me-1" /> Reset
-                    </button>
-                </div>
-              </form>
-            </div>
-          </div>
+   <div className="container-fluid">
+  {/* Cash Book Entry Form */}
+  <div className="card mb-4">
+    <div className="card-header">
+      <h5 className="card-title mb-0">Cash Book Entry</h5>
     </div>
-    <div className="col-lg-12">
-      <div className="card">
-        <div className="card-header">
-          <h5 className="card-title mb-0">Cash Book Entries</h5>
+    <div className="card-body">
+      <form
+        className="row gy-3 needs-validation"
+        id="form_cash_bk"
+        noValidate
+        onSubmit={(e) => e.preventDefault()}
+      >
+        {/* Account Selection */}
+        <div className="col-md-3">
+          <label className="form-label">Select Account *</label>
+          <AsyncSelect
+            cacheOptions
+            defaultOptions
+            value={selectedOption}
+            onChange={handleChange}
+            inputValue={inputValue}
+            onInputChange={handleInputChange}
+            loadOptions={loadOptions}
+          />
         </div>
-        <div className="card-body">
-        <select id="customSelect" onChange={handleSelTypechange} className="form-control custom-cash-cls" style={{marginLeft:"20%"}}>
-            <option value="all">All</option>
-            <option value="general">General</option>
-            <option value="commission">Commission</option>
-            <option value="party">Party</option>
-            <option value="vehicle">Vehicle</option>
-            <option value="client">Client</option>
-            <option value="supplier">Supplier</option>
+
+        {/* Bill Selection */}
+        <div className="col-md-2" hidden={hidden}>
+          <label className="form-label">Select Bill</label>
+          <select
+            id="bill_number"
+            className="form-select"
+            value={bill_no}
+            onChange={handleBillChange}
+            required
+          />
+        </div>
+
+        {/* Date */}
+        <div className="col-md-2">
+          <label className="form-label">Date *</label>
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            className="form-control"
+            selected={cashbookDate}
+            onChange={(date) => setcashbookDate(date)}
+          />
+        </div>
+
+        {/* Type */}
+        <div className="col-md-1">
+          <label className="form-label">Type *</label>
+          <select
+            className="form-select"
+            value={acc_Type}
+            onChange={(e) => setacc_Type(e.target.value)}
+            required
+          >
+            <option value="">Select</option>
+            <option value="in">IN</option>
+            <option value="out">OUT</option>
+          </select>
+        </div>
+
+        {/* Method */}
+        <div className="col-md-2">
+          <label className="form-label">Method *</label>
+          <select
+            className="form-select"
+            value={acc_Method}
+            onChange={(e) => setacc_Method(e.target.value)}
+            required
+          >
+            <option value="">Select Account</option>
+            <option value="Cash">Cash</option>
+            <option value="Bank">Bank</option>
+            <option value="Cheque">Cheque</option>
+            <option value="Digital Wallet">Digital Wallet</option>
+          </select>
+        </div>
+
+        {/* Amount */}
+        <div className="col-md-2">
+          <label className="form-label">Amount *</label>
+          <input
+            type="number"
+            className="form-control"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+            required
+          />
+        </div>
+
+        {/* Description */}
+        <div className="col-md-6">
+          <label className="form-label">Account Description *</label>
+          <textarea
+            className="form-control"
+            rows={2}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+            required
+          />
+        </div>
+
+        {/* Action Buttons */}
+        <div className="col-md-6 d-flex align-items-end gap-2">
+          <button
+            className="btn btn-primary"
+            onClick={handleSubmit}
+            disabled={!canSubmit}
+          >
+            <Icon icon="mdi:content-save" className="me-1" />
+            Save
+          </button>
+          <button className="btn btn-secondary" type="button" onClick={handleReset}>
+            <Icon icon="mdi:refresh" className="me-1" />
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {/* Cash Book Entries */}
+  <div className="card">
+    <div className="card-header d-flex justify-content-between align-items-center">
+      <h5 className="card-title mb-0">Cash Book Entries</h5>
+      <div className="d-flex gap-3">
+        <select
+          id="customSelect"
+          onChange={handleSelTypechange}
+          className="form-select"
+          style={{ minWidth: "150px" }}
+        >
+          <option value="all">All</option>
+          <option value="general">General</option>
+          <option value="commission">Commission</option>
+          <option value="party">Party</option>
+          <option value="vehicle">Vehicle</option>
+          <option value="client">Client</option>
+          <option value="supplier">Supplier</option>
         </select>
-        <input type="date" id="customFilter" name="filter_date" onChange={handleDatechange} className="form-control custom-cash-cls"/>
 
-
-            <table className="table border-primary-table mb-0" id="table_cashbook">
-              <thead>
-                <tr className="small">
-                  <th className="py-2">SNO</th>
-                  <th className="py-2">Account</th>
-                  <th className="py-2">Date</th>
-                  <th className="py-2">Description</th>
-                  <th className="py-2">IN</th>
-                  <th className="py-2">OUT</th>
-                  <th className="py-2">Balance</th>
-                  <th className="py-2">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                 
-              </tbody>
-              <tfoot>
-        </tfoot>
-            </table>
-          
-        </div>
+        <input
+          type="date"
+          id="customFilter"
+          name="filter_date"
+          onChange={handleDatechange}
+          className="form-control"
+        />
       </div>
     </div>
+
+    <div className="card-body table-responsive">
+      <table className="table table-bordered table-hover text-center small mb-0" id="table_cashbook">
+        <thead className="table-light">
+          <tr>
+            <th>SNO</th>
+            <th>Account</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>IN</th>
+            <th>OUT</th>
+            <th>Balance</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* Map your entries here */}
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
+
   );
 };
 export default CashBookDataTable;
