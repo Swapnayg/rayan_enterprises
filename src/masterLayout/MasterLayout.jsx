@@ -193,7 +193,7 @@ const handleLogOut = (e) => {
                     Dashboard
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/sales-dashboard"
                     className={
@@ -203,7 +203,7 @@ const handleLogOut = (e) => {
                     <i className="ri-circle-fill circle-icon text-success-main w-auto" />{" "}
                     Sales Dashboard
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="/goods-dashboard"
@@ -213,7 +213,7 @@ const handleLogOut = (e) => {
                     Goods Dashboard
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                 <Link
                     href="/oils-dashboard"
                     className={pathname === "/oils-dashboard" ? "active-page" : ""}
@@ -221,7 +221,7 @@ const handleLogOut = (e) => {
                     <i className="ri-circle-fill circle-icon text-purple w-auto" />
                     Oils Dashboard
                   </Link>
-                </li>
+                </li> */}
               </ul>   
             </li>
             <li className="dropdown">
@@ -310,7 +310,7 @@ const handleLogOut = (e) => {
                 </li>
               </ul>
             </li>
-            <li className="dropdown">
+             {/* <li className="dropdown">
               <Link href="#">
                 <Icon
                   icon="tabler:shopping-bag-check"
@@ -330,7 +330,7 @@ const handleLogOut = (e) => {
                     Manifest
                   </Link>
                 </li>
-                    {/* <li>
+                    <li>
                   <Link
                     href="/add_party-oil"
                     className={
@@ -340,8 +340,8 @@ const handleLogOut = (e) => {
                     <i className="ri-circle-fill circle-icon text-success-main w-auto" />{" "}
                     New Party Bill
                   </Link>
-                </li> */}
-                {/* <li>
+                </li> 
+                 <li>
                   <Link
                     href="/party-oils"
                     className={pathname === "/party-oils" ? "active-page" : ""}
@@ -349,7 +349,7 @@ const handleLogOut = (e) => {
                     <i className="ri-circle-fill circle-icon text-warning-main w-auto" />{" "}
                     Party Bill
                   </Link>
-                </li> */}
+                </li> 
 
                   <li>
                   <Link
@@ -371,9 +371,9 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="sidebar-menu-group-title">Sales & Inventory</li>
-            <li className="dropdown">
+            </li>  */}
+            {/* <li className="sidebar-menu-group-title">Sales & Inventory</li> */}
+            {/* <li className="dropdown">
             <Link href="#">
                 <Icon
                   icon="octicon:graph"
@@ -432,7 +432,7 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
             {/* <li className="dropdown">
             <Link href="#">
@@ -470,8 +470,8 @@ const handleLogOut = (e) => {
               </ul>
             </li> */}
 
-            <li className="sidebar-menu-group-title">Stock</li>
-            <li className="dropdown">
+            {/* <li className="sidebar-menu-group-title">Stock</li> */}
+            {/* <li className="dropdown">
             <Link href="#">
                 <Icon
                   icon="ep:element-plus"
@@ -540,8 +540,8 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="dropdown">
+            </li> */}
+            {/* <li className="dropdown">
             <Link href="#">
                 <Icon
                   icon="ep:shopping-cart-full"
@@ -575,8 +575,8 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="dropdown">
+            </li> */}
+            {/* <li className="dropdown">
             <Link href="#">
                 <Icon
                   icon="ep:refresh-left"
@@ -610,9 +610,9 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="sidebar-menu-group-title">Contacts</li>
-            <li className="dropdown">
+            </li> */}
+            {/* <li className="sidebar-menu-group-title">Contacts</li> */}
+            {/* <li className="dropdown">
             <Link href="#">
                 <Icon
                   icon="rivet-icons:user-group"
@@ -656,8 +656,8 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li className="dropdown">
+            </li> */}
+            {/* <li className="dropdown">
             <Link href="#">
                 <Icon
                   icon="ep:van"
@@ -690,7 +690,7 @@ const handleLogOut = (e) => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className="sidebar-menu-group-title">Finance</li>
            
             <li className="dropdown">
@@ -795,7 +795,7 @@ const handleLogOut = (e) => {
                     Manifest Goods
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/manifest-oil-report"
                     className={
@@ -805,7 +805,7 @@ const handleLogOut = (e) => {
                     <i className="ri-circle-fill circle-icon text-purple w-auto" />{" "}
                     Manifest Oils
                   </Link>
-                </li>  
+                </li>   */}
                 <li>
                   <Link
                     href="/all-goods-report"
