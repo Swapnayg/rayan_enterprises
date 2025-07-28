@@ -625,7 +625,7 @@ const handleOverall = (e) => {
                 className='w-20-px h-20-px rounded-circle flex-shrink-0'
               />
               <div className='flex-grow-1'>
-                <h6 className='text-md mb-0'>No. Goods Vehicles</h6>
+                <h6 className='text-md mb-0'>No. Goods Brokers</h6>
               </div>
             </div>
             <h6 className='text-md fw-medium mb-0'>{noGoodVeh}</h6>
@@ -638,7 +638,7 @@ const handleOverall = (e) => {
                 className='w-20-px h-20-px rounded-circle flex-shrink-0'
               />
               <div className='flex-grow-1'>
-                <h6 className='text-md mb-0'>No. Oil Vehicles</h6>
+                <h6 className='text-md mb-0'>No. Oil Brokers</h6>
               </div>
             </div>
             <h6 className='text-md fw-medium mb-0'>{noOilVeh}</h6>

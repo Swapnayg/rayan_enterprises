@@ -206,7 +206,7 @@ const AllOilsReportLists = () => {
                 <select id="customSelect" onChange={handleSelTypechange} className="form-control">
                 <option value="all">All</option>
                   <option value="party">Party</option>
-                  <option value="vehicle">Vehicle</option>
+                  <option value="vehicle">Brokers</option>
                 </select>
                 </td>
                 <td style={{textAlign:"right"}}>

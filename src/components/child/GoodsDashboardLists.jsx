@@ -400,7 +400,7 @@ useEffect(() => {
           data: jsprovdata.wk_freight_data,
         },
         {
-          name: "Vehicle Freight",
+          name: "Brokers Freight",
           data: jsprovdata.wk_vehicle_data,
         },
         {
@@ -467,7 +467,7 @@ return (
                   </span>
                   <div>
                     <span className='mb-2 fw-medium text-secondary-light text-sm'>
-                      Total Vehicle
+                      Total Brokers
                     </span>
                     <h6 className='fw-semibold'>{vehicleAmt}</h6>
                   </div>
@@ -609,7 +609,7 @@ return (
                   </span>
                   <div>
                     <span className='mb-2 fw-medium text-secondary-light text-sm'>
-                      No. Vehicles
+                      No. Brokers
                     </span>
                     <h6 className='fw-semibold'>{vehicleCount}</h6>
                   </div>

@@ -98,7 +98,7 @@ const OilsVehicleLists = () => {
               withReactContent(Swal).fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Vehicle Already Exists!",
+                text: "Broker Already Exists!",
                 draggable: true
               });
               handleReset();

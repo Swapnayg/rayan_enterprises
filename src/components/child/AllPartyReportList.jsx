@@ -202,7 +202,7 @@ const AllPartyReportList = () => {
                   <option value="general">General</option>
                   <option value="commission">Commission</option>
                   <option value="party">Party</option>
-                  <option value="vehicle">Vehicle</option>
+                  <option value="vehicle">Brokers</option>
                   <option value="client">Client</option>
                   <option value="supplier">Supplier</option>
                 </select>

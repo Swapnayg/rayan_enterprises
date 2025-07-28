@@ -197,7 +197,7 @@ const ManifestOilsReport = () => {
             <tr>
               <th scope="col" >BillNo</th>
               <th scope="col">Date</th>
-              <th scope="col" >Vehicle</th>
+              <th scope="col" >Brokers</th>
               <th scope="col">Party</th>
               <th scope="col">Weight(kg)</th>
               <th scope="col">Per/Ton</th>
@@ -205,8 +205,8 @@ const ManifestOilsReport = () => {
               <th scope="col">Freight(Rs)</th>
               <th scope="col">4% Freight (Rs)</th>
               <th scope="col">Commisson (Rs)</th>
-              <th scope="col">Vehicle F(Rs)</th>
-              <th scope="col">Vehicle A(Rs)</th>
+              <th scope="col">Brokers F(Rs)</th>
+              <th scope="col">Brokers A(Rs)</th>
               <th scope="col">Status</th>
             </tr>
           </thead>

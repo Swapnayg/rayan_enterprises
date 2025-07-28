@@ -607,7 +607,7 @@ function handleChange4(e) {
                 <div className="col-md-4">
                   <label className="form-label">Vehicle *</label>
                   <select className="form-select">
-                    <option>Select Vehicle</option>
+                    <option>Select Broker</option>
                   </select>
                 </div>
                 <div className="col-md-6">
@@ -687,12 +687,12 @@ function handleChange4(e) {
                 <div className="col-12 mt-3">
                   <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
                     <Icon icon="mdi:truck-outline" className="text-red-600 text-xl" />
-                    Vehicle Payment Details
+                    Brokers Payment Details
                   </label>
                 </div>
       
                 <div className="col-md-4">
-                  <label className="form-label">Advance To Vehicle (Rs)</label>
+                  <label className="form-label">Advance To Brokers (Rs)</label>
                   <input type="number" className="form-control" />
                 </div>
                 <div className="col-md-4">
@@ -705,7 +705,7 @@ function handleChange4(e) {
                   </select>
                 </div>
                 <div className="col-md-4">
-                  <label className="form-label">Vehicle Balance (Rs)</label>
+                  <label className="form-label">Brokers Balance (Rs)</label>
                   <input type="number" className="form-control" readOnly />
                 </div>
       
@@ -738,7 +738,7 @@ function handleChange4(e) {
             <tr>
               <th scope="col" >BillNo</th>
               <th scope="col">Date</th>
-              <th scope="col" >Vehicle</th>
+              <th scope="col" >Brokers</th>
               <th scope="col">Party</th>
               <th scope="col">Weight(kg)</th>
               <th scope="col">Per/Ton</th>
@@ -746,8 +746,8 @@ function handleChange4(e) {
               <th scope="col">Freight(Rs)</th>
               <th scope="col">4% Freight (Rs)</th>
               <th scope="col">Commisson (Rs)</th>
-              <th scope="col">Vehicle F(Rs)</th>
-              <th scope="col">Vehicle A(Rs)</th>
+              <th scope="col">Brokers F(Rs)</th>
+              <th scope="col">Brokers A(Rs)</th>
               <th scope="col">Status</th>
               <th scope="col">Action</th>
             </tr>

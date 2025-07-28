@@ -305,7 +305,7 @@ const handleLogOut = (e) => {
                     className={pathname === "/goods-vehicle" ? "active-page" : ""}
                   >
                     <i className="ri-circle-fill circle-icon text-primary-600 w-auto" />{" "}
-                    Vehicles
+                    Brokers
                   </Link>
                 </li>
               </ul>
@@ -367,7 +367,7 @@ const handleLogOut = (e) => {
                     className={pathname === "/oil-vehicles" ? "active-page" : ""}
                   >
                     <i className="ri-circle-fill circle-icon text-primary-600 w-auto" />{" "}
-                    Vehicles
+                    Brokers
                   </Link>
                 </li>
               </ul>
