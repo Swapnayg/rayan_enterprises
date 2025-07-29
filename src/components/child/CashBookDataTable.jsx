@@ -661,7 +661,6 @@ const CashBookDataTable = () => {
           <option value="client">Client</option>
           <option value="supplier">Supplier</option>
         </select>
-
         <input
           type="date"
           id="customFilter"
