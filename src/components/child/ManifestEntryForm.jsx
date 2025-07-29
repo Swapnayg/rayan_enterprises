@@ -14,11 +14,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const ManifestEntryForm = () => {
-
     const [BiltyNo, setBiltyNo] = useState("");
     const [GBiltyId, setGBiltyId] = useState(0);
     const [BiltyDate, setBiltyDate] = useState(new Date());
     const [BVehicle, setBVehicle] = useState("");
+    const [BVehicleNum, setBVehicleNum] = useState("");
     const [loading, setloading] = useState("");
     const [unloading, setunloading] = useState("");
     const [Bweight, setBweight] = useState("");
@@ -118,7 +118,7 @@ const ManifestEntryForm = () => {
             method: 'POST', 
             headers: {   'Accept': 'application/json',
               'Content-Type': 'application/json'  }, 
-              body: JSON.stringify({ userid:localStorage.getItem('id'), G_BiltyNo: BiltyNo, G_BiltyDate: BiltyDate, G_BVehicle :BVehicle , G_loading: loading, G_unloading: unloading, G_Bweight: Bweight, G_BPerTon :BPerTon , G_BFreight: BFreight, G_BWRT4Freight:BWRT4Freight, G_Bparty: Bparty, G_BComm : BComm, G_BOtherCharges: BOtherCharges, G_BvehicleFreight: BvehicleFreight, G_BvehicleBal: BvehicleBal, G_BvehicleAdvance: veh_advance, Goods_GST: Goods_GST , G_paid_Method: paid_Method, per_wft:BWRT4Rate, per_comm :BCommRate})
+              body: JSON.stringify({ userid:localStorage.getItem('id'), G_BiltyNo: BiltyNo, G_BiltyDate: BiltyDate, G_BVehicle :BVehicle , G_loading: loading, G_unloading: unloading, G_Bweight: Bweight, G_BPerTon :BPerTon , G_BFreight: BFreight, G_BWRT4Freight:BWRT4Freight, G_Bparty: Bparty, G_BComm : BComm, G_BOtherCharges: BOtherCharges, G_BvehicleFreight: BvehicleFreight, G_BvehicleBal: BvehicleBal, G_BvehicleAdvance: veh_advance, Goods_GST: Goods_GST , G_paid_Method: paid_Method, per_wft:BWRT4Rate, per_comm :BCommRate, G_BVehicleNum :BVehicleNum})
             }).then(res => {
                 return res.json();
             }).then(data => {
@@ -134,7 +134,7 @@ const ManifestEntryForm = () => {
             method: 'POST', 
             headers:{   'Accept': 'application/json',
               'Content-Type': 'application/json'  },
-              body: JSON.stringify({userid:localStorage.getItem('id'),G_BiltyId: GBiltyId,G_BiltyNo: BiltyNo, G_BiltyDate: BiltyDate, G_BVehicle :BVehicle , G_loading: loading, G_unloading: unloading, G_Bweight: Bweight, G_BPerTon :BPerTon , G_BFreight: BFreight, G_BWRT4Freight:BWRT4Freight, G_Bparty: Bparty, G_BComm : BComm, G_BOtherCharges: BOtherCharges, G_BvehicleFreight: BvehicleFreight, G_BvehicleBal: BvehicleBal, G_BvehicleAdvance: veh_advance, Goods_GST: Goods_GST , G_paid_Method: paid_Method, per_wft:BWRT4Rate, per_comm :BCommRate})
+              body: JSON.stringify({userid:localStorage.getItem('id'),G_BiltyId: GBiltyId,G_BiltyNo: BiltyNo, G_BiltyDate: BiltyDate, G_BVehicle :BVehicle , G_loading: loading, G_unloading: unloading, G_Bweight: Bweight, G_BPerTon :BPerTon , G_BFreight: BFreight, G_BWRT4Freight:BWRT4Freight, G_Bparty: Bparty, G_BComm : BComm, G_BOtherCharges: BOtherCharges, G_BvehicleFreight: BvehicleFreight, G_BvehicleBal: BvehicleBal, G_BvehicleAdvance: veh_advance, Goods_GST: Goods_GST , G_paid_Method: paid_Method, per_wft:BWRT4Rate, per_comm :BCommRate, G_BVehicleNum :BVehicleNum})
             }).then(res => {
               return res.json();
           }).then(data => {
@@ -172,6 +172,7 @@ const ManifestEntryForm = () => {
               row += '<td style="text-transform:capitalize">' + jsdata[i].bilty_no + '</td>';
               row += '<td style="text-transform:capitalize">' +   moment(jsdata[i].b_date).format("DD/MM/YYYY") + '</td>';
               row += '<td style="text-transform:capitalize">' + jsdata[i].goods_vehicle_name + '</td>';
+              row += '<td style="text-transform:capitalize">' + jsdata[i].goods_vehicle_number + '</td>';
               row += '<td style="text-transform:capitalize" data-type='+jsdata[i].goods_party_name+'>' +  jsdata[i].goods_party_name+ '</td>';
               row += '<td>' + jsdata[i].weight + '</td>';
               row += '<td style="text-transform:capitalize">' + jsdata[i].per_ton + '</td>';
@@ -234,6 +235,7 @@ const ManifestEntryForm = () => {
         setBiltyDate(my_date);
         setBVehicle(array_list.vehicle.toString().trim());
         setloading(array_list.loading_point.toString().trim());
+        setBVehicleNum(array_list.goods_vehicle_number.toString().trim());
         setunloading(array_list.unloading_point.toString().trim());
         setBweight(array_list.weight.toString().trim());
         setBPerTon(array_list.per_ton.toString().trim());
@@ -312,6 +314,7 @@ const ManifestEntryForm = () => {
               row += '<td style="text-transform:capitalize">' + jsdata[i].bilty_no + '</td>';
               row += '<td style="text-transform:capitalize">' + moment(jsdata[i].b_date).format("DD/MM/YYYY") + '</td>';
               row += '<td style="text-transform:capitalize">' + jsdata[i].goods_vehicle_name + '</td>';
+              row += '<td style="text-transform:capitalize">' + jsdata[i].goods_vehicle_number + '</td>';
               row += '<td style="text-transform:capitalize" data-type='+jsdata[i].goods_party_name+'>' +  jsdata[i].goods_party_name+ '</td>';
               row += '<td>' + jsdata[i].weight + '</td>';
               row += '<td style="text-transform:capitalize">' + jsdata[i].per_ton + '</td>';
@@ -582,184 +585,311 @@ function handleChange4(e) {
               <h5 className="card-title mb-0">Bilty (Goods) Entry</h5>
             </div>
             <div className="card-body">
-              <form
-                className="row gy-3 needs-validation"
-                id="form_bilty_entry"
-                noValidate
-                onSubmit={(e) => e.preventDefault()}
-              >
-                {/* Section: Basic Information */}
-                <div className="col-12">
-                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
-                    <Icon icon="mdi:information-outline" className="text-green-600 text-xl" />
-                    Basic Information
-                  </label>
-                </div>
-      
-                <div className="col-md-4">
-                  <label className="form-label">Bilty No *</label>
-                  <input type="text" className="form-control" readOnly />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Date *</label>
-                  <input type="date" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Vehicle *</label>
-                  <select className="form-select">
-                    <option>Select Broker</option>
-                  </select>
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label">Loading Points *</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label">Un-Loading Points *</label>
-                  <input type="text" className="form-control" />
-                </div>
-      
-                {/* Section: Party & Weight Details */}
-                <div className="col-12 mt-3">
-                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
-                    <Icon icon="mdi:scale-balance" className="text-orange-600 text-xl" />
-                    Party & Weight Details
-                  </label>
-                </div>
-      
-                <div className="col-md-4">
-                  <label className="form-label">Parties *</label>
-                  <select className="form-select">
-                    <option>Select Party</option>
-                  </select>
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Weight (kg)</label>
-                  <input type="number" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Per/Ton *</label>
-                  <input type="number" className="form-control" />
-                </div>
-      
-                {/* Section: Financial Details */}
-                <div className="col-12 mt-3">
-                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
-                    <Icon icon="mdi:currency-inr" className="text-purple-600 text-xl" />
-                    Financial Details
-                  </label>
-                </div>
-      
-                <div className="col-md-4">
-                  <label className="form-label">Tax Rate (%)</label>
-                  <input type="number" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Freight Amount (Rs)</label>
-                  <input type="number" className="form-control" readOnly />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">WHT (%)</label>
-                  <input type="number" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">WHT Amount (Rs)</label>
-                  <input type="number" className="form-control" readOnly />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Commission (%)</label>
-                  <input type="number" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Commission Amount (Rs)</label>
-                  <input type="number" className="form-control" readOnly />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Other Charges (Rs)*</label>
-                  <input type="number" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Vehicle Freight (Rs)*</label>
-                  <input type="number" className="form-control" readOnly />
-                </div>
-      
-                {/* Section: Vehicle Payment Details */}
-                <div className="col-12 mt-3">
-                  <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
-                    <Icon icon="mdi:truck-outline" className="text-red-600 text-xl" />
-                    Brokers Payment Details
-                  </label>
-                </div>
-      
-                <div className="col-md-4">
-                  <label className="form-label">Advance To Brokers (Rs)</label>
-                  <input type="number" className="form-control" />
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Payment Method *</label>
-                  <select className="form-select">
-                    <option>Cash</option>
-                    <option>Bank</option>
-                    <option>Cheque</option>
-                    <option>Digital Wallet</option>
-                  </select>
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Brokers Balance (Rs)</label>
-                  <input type="number" className="form-control" readOnly />
-                </div>
-      
-                {/* Buttons */}
-                <div className="col-12 d-flex gap-2 mt-3">
-                  <button type="submit" className="btn btn-primary d-flex align-items-center gap-2">
-                    <Icon icon="mdi:content-save" className="text-lg" />
-                    Save 
-                  </button>
-                  <button type="reset" className="btn btn-secondary d-flex align-items-center gap-2">
-                    <Icon icon="mdi:refresh" className="text-lg" />
-                    Reset
-                  </button>
-                </div>
-              </form>
+             <form
+  className="row gy-3 needs-validation"
+  id="form_bilty_entry"
+  noValidate
+  onSubmit={(e) => e.preventDefault()}
+>
+  {/* Section: Basic Information */}
+  <div className="col-12">
+    <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+      <Icon icon="mdi:information-outline" className="text-green-600 text-xl" />
+      Basic Information
+    </label>
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Bilty No *</label>
+    <input
+      type="text"
+      className="form-control"
+      value={BiltyNo}
+      readOnly
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Date *</label>
+    <input
+      type="date"
+      className="form-control"
+      value={BiltyDate.toISOString().split('T')[0]}
+      onChange={(e) => setBiltyDate(new Date(e.target.value))}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Broker *</label>
+    <select
+      className="form-select"
+      id="goods_vehicle"
+      value={BVehicle}
+      onChange={(e) => setBVehicle(e.target.value)}
+    >
+      <option value="">Select Broker</option>
+      {/* Populate broker options here dynamically */}
+    </select>
+  </div>
+
+  {BVehicle && (
+    <div className="col-md-4">
+      <label className="form-label">Vehicle Number *</label>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Enter vehicle number"
+        value={BVehicleNum}
+        onChange={(e) => setBVehicleNum(e.target.value)}
+      />
+    </div>
+  )}
+
+  <div className="col-md-6">
+    <label className="form-label">Loading Points *</label>
+    <input
+      type="text"
+      className="form-control"
+      value={loading}
+      onChange={(e) => setloading(e.target.value)}
+    />
+  </div>
+
+  <div className="col-md-6">
+    <label className="form-label">Un-Loading Points *</label>
+    <input
+      type="text"
+      className="form-control"
+      value={unloading}
+      onChange={(e) => setunloading(e.target.value)}
+    />
+  </div>
+
+  {/* Party & Weight */}
+  <div className="col-12 mt-3">
+    <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+      <Icon icon="mdi:scale-balance" className="text-orange-600 text-xl" />
+      Party & Weight Details
+    </label>
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Parties *</label>
+    <select
+      className="form-select"
+      id="goods_party_1"
+      value={Bparty}
+      onChange={(e) => setBparty(e.target.value)}
+    >
+      <option value="">Select Party</option>
+      {/* Populate party options dynamically */}
+    </select>
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Weight (kg)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={Bweight}
+      onChange={handleChange}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Per/Ton *</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BPerTon}
+      onChange= {handleChange2}
+    />
+  </div>
+
+  {/* Financial Details */}
+  <div className="col-12 mt-3">
+    <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+      <Icon icon="mdi:currency-inr" className="text-purple-600 text-xl" />
+      Financial Details
+    </label>
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Tax Rate (%)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={Goods_GST}
+      onChange= {handleChange5}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Freight Amount (Rs)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BFreight}
+      readOnly
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">WHT (%)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BWRT4Rate}
+     onChange={handleChange8}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">WHT Amount (Rs)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BWRT4Freight}
+      readOnly
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Commission (%)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BCommRate}
+      onChange={handleChange4}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Commission Amount (Rs)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BComm}
+      readOnly
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Other Charges (Rs)*</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BOtherCharges}
+      onChange={handleChange7}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Broker Freight (Rs)*</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BvehicleFreight}
+      readOnly
+    />
+  </div>
+
+  {/* Broker Payment */}
+  <div className="col-12 mt-3">
+    <label className="form-label fw-bold d-flex align-items-center gap-2 border-bottom pb-2">
+      <Icon icon="mdi:truck-outline" className="text-red-600 text-xl" />
+      Brokers Payment Details
+    </label>
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Advance To Brokers (Rs)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BvehicleAdvance}
+     onChange={handleChange6}
+    />
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Payment Method *</label>
+    <select
+      className="form-select"
+      value={paid_Method}
+      onChange={(e) => setpaid_Method(e.target.value)}
+    >
+      <option>Cash</option>
+      <option>Bank</option>
+      <option>Cheque</option>
+      <option>Digital Wallet</option>
+    </select>
+  </div>
+
+  <div className="col-md-4">
+    <label className="form-label">Brokers Balance (Rs)</label>
+    <input
+      type="number"
+      className="form-control"
+      value={BvehicleBal}
+      readOnly
+    />
+  </div>
+
+  {/* Buttons */}
+  <div className="col-12 d-flex gap-2 mt-3">
+    <button type="submit" className="btn btn-primary d-flex align-items-center gap-2">
+      <Icon icon="mdi:content-save" className="text-lg" />
+      Save 
+    </button>
+    <button type="reset" className="btn btn-secondary d-flex align-items-center gap-2">
+      <Icon icon="mdi:refresh" className="text-lg" />
+      Reset
+    </button>
+  </div>
+</form>
+
             </div>
           </div>
     </div>
-    <div className="card basic-data-table">
-      <div className="card-header">
-        <h5 className="card-title mb-0">Manifest Goods List</h5>
-      </div>
-      <div className="card-body">
-        <table
-          className="table bordered-table mb-0"
-          id="mani_goods_table"
-          data-page-length={10}
-        >
-      <thead>
-            <tr>
-              <th scope="col" >BillNo</th>
-              <th scope="col">Date</th>
-              <th scope="col" >Brokers</th>
-              <th scope="col">Party</th>
-              <th scope="col">Weight(kg)</th>
-              <th scope="col">Per/Ton</th>
-              <th scope="col">Gst(%)</th>
-              <th scope="col">Freight(Rs)</th>
-              <th scope="col">4% Freight (Rs)</th>
-              <th scope="col">Commisson (Rs)</th>
-              <th scope="col">Brokers F(Rs)</th>
-              <th scope="col">Brokers A(Rs)</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Sample Data Rows */}
-
-            {/* Add more sample rows as needed */}
-          </tbody>
-        </table>
-      </div>
+   <div className="card basic-data-table">
+  <div className="card-header">
+    <h5 className="card-title mb-0">Manifest Goods List</h5>
+  </div>
+  <div className="card-body">
+    <div className="table-responsive"> {/* 👈 Makes the table horizontally scrollable on small screens */}
+      <table
+        className="table table-bordered table-hover mb-0"
+        id="mani_goods_table"
+        data-page-length={10}
+      >
+        <thead>
+          <tr>
+            <th scope="col">BillNo</th>
+            <th scope="col">Date</th>
+            <th scope="col">Brokers</th>
+            <th scope="col">Vehicle Number</th>
+            <th scope="col">Party</th>
+            <th scope="col">Weight(kg)</th>
+            <th scope="col">Per/Ton</th>
+            <th scope="col">Gst(%)</th>
+            <th scope="col">Freight(Rs)</th>
+            <th scope="col">4% Freight (Rs)</th>
+            <th scope="col">Commisson (Rs)</th>
+            <th scope="col">Brokers F(Rs)</th>
+            <th scope="col">Brokers A(Rs)</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* Dynamic or static rows go here */}
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
+
     </div>
   );
 };
