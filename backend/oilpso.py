@@ -8,6 +8,7 @@ class OilPso(db.Model):
     b_date = db.Column(db.DateTime(timezone=True), default=datetime.datetime.now())
     vehicle = db.Column(db.Integer,db.ForeignKey('vehicles.id'))
     oil_vehicle_name = db.relationship('Vehicles', backref='OilPso.vehicle')
+    oils_vehicle_number = db.Column(db.Integer)  
     loading_point = db.Column(db.String(500))
     unloading_point = db.Column(db.String(500))
     parties = db.Column(db.Integer,db.ForeignKey('paty_adda.id'))
@@ -30,12 +31,13 @@ class OilPso(db.Model):
     tax_per =  db.Column(db.String(50))
     comm_per =  db.Column(db.String(50))
 
-    def __init__(self,id, bilty_no, b_date,vehicle,oil_vehicle_name,loading_point,unloading_point,parties,oil_party_name,material,quantity,freight,commission,other_cahrges,vehicle_freight,vehicle_balance,advance_to_vehicle,per_ton,wrt_4_per_freight,bill_status,paid_by,oils_gst,datetime, userid, tax_per, comm_per):
+    def __init__(self,id, bilty_no, b_date,vehicle,oil_vehicle_name,oils_vehicle_number,loading_point,unloading_point,parties,oil_party_name,material,quantity,freight,commission,other_cahrges,vehicle_freight,vehicle_balance,advance_to_vehicle,per_ton,wrt_4_per_freight,bill_status,paid_by,oils_gst,datetime, userid, tax_per, comm_per):
         self.id = id
         self.bilty_no = bilty_no
         self.b_date = b_date
         self.vehicle = vehicle
         self.oil_vehicle_name = OilPso.vehicle.vehicle_num
+        self.oils_vehicle_number =  oils_vehicle_number
         self.oil_vehicle_name = oil_vehicle_name
         self.loading_point = loading_point
         self.unloading_point = unloading_point
@@ -63,6 +65,6 @@ class OilPso(db.Model):
         return '<Party %r' % self.bilty_no
     
     def map(self):
-        return {'id': self.id, 'bilty_no': self.bilty_no, 'b_date': self.b_date, 'vehicle': self.vehicle,'oil_vehicle_name':self.oil_vehicle_name.vehicle_num, 'loading_point': self.loading_point, 'unloading_point': self.unloading_point, 'parties': self.parties,'oil_party_name':self.oil_party_name.english_name, 'material': self.material, 'quantity': self.quantity,'freight': self.freight, 'commission': self.commission,'other_cahrges':self.other_cahrges,'vehicle_freight':self.vehicle_freight,'vehicle_balance':self.vehicle_balance,'advance_to_vehicle':self.advance_to_vehicle,'per_ton':self.per_ton,'wrt_4_per_freight':self.wrt_4_per_freight,'bill_status':self.bill_status,'paid_by':self.paid_by,'oils_gst':self.oils_gst,'datetime': self.datetime, "userid":self.userid,"tax_per":self.tax_per, "comm_per":self.comm_per}
+        return {'id': self.id, 'bilty_no': self.bilty_no, 'b_date': self.b_date, 'vehicle': self.vehicle,'oils_vehicle_number':self.oils_vehicle_number,'oil_vehicle_name':self.oil_vehicle_name.vehicle_num, 'loading_point': self.loading_point, 'unloading_point': self.unloading_point, 'parties': self.parties,'oil_party_name':self.oil_party_name.english_name, 'material': self.material, 'quantity': self.quantity,'freight': self.freight, 'commission': self.commission,'other_cahrges':self.other_cahrges,'vehicle_freight':self.vehicle_freight,'vehicle_balance':self.vehicle_balance,'advance_to_vehicle':self.advance_to_vehicle,'per_ton':self.per_ton,'wrt_4_per_freight':self.wrt_4_per_freight,'bill_status':self.bill_status,'paid_by':self.paid_by,'oils_gst':self.oils_gst,'datetime': self.datetime, "userid":self.userid,"tax_per":self.tax_per, "comm_per":self.comm_per}
 
 

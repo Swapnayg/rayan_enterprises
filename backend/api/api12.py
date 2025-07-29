@@ -580,7 +580,7 @@ def p_category_delete(id, userid):
     for prd in all_product:
         del_product_set = TblProduct.query.get(int(prd.id))
         del_stk_trf_prod_data = StockTrasfer.__table__.delete().where(StockTrasfer.stock_product == str(del_product_set.id).strip())
-        quote_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM public.quote_items where item_product= '+str(del_product_set.id)+';') 
+        quote_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM test.quote_items where item_product= '+str(del_product_set.id)+';') 
         quote_items = db.session.execute(quote_items_txt)
         for q_inv in quote_items:
             del_quote_data = QuoteItems.__table__.delete().where(QuoteItems.item_invoice == str(q_inv.item_invoice).strip())
@@ -589,7 +589,7 @@ def p_category_delete(id, userid):
             db.session.execute(del_qoute)
             db.session.commit()
          
-        inv_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM public.invoice_items where item_product= '+str(del_product_set.id)+';') 
+        inv_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM test.invoice_items where item_product= '+str(del_product_set.id)+';') 
         invoice_items = db.session.execute(inv_items_txt)
         for inv in invoice_items:
             get_invoice = TblInvoice.query.get(int(str(inv.item_invoice).strip()))
@@ -603,7 +603,7 @@ def p_category_delete(id, userid):
             db.session.commit()
             RefreshCOA_Customer.refresh_COA_Customer(get_client.chart_accnt)
         
-        rcc_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM public.recc_items where item_product= '+str(del_product_set.id)+';') 
+        rcc_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM test.recc_items where item_product= '+str(del_product_set.id)+';') 
         recc_inv_items = db.session.execute(rcc_items_txt)
         for r_cc in recc_inv_items:
             get_recc_invoice = TblReccInvoice.query.get(int(str(r_cc.item_invoice).strip()))
@@ -617,7 +617,7 @@ def p_category_delete(id, userid):
             db.session.commit()
             RefreshCOA_Customer.refresh_COA_Customer(get_client.chart_accnt)
 
-        cl_stk_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM public.client_return_items where item_product= '+str(del_product_set.id)+';') 
+        cl_stk_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM test.client_return_items where item_product= '+str(del_product_set.id)+';') 
         cl_stk_rtn_inv_items = db.session.execute(cl_stk_items_txt)
         for cl_stk_inv in cl_stk_rtn_inv_items:
             get_cl_stk_invoice = TblClnStockRtn.query.get(int(str(cl_stk_inv.item_invoice).strip()))
@@ -632,7 +632,7 @@ def p_category_delete(id, userid):
             RefreshCOA_Customer.refresh_COA_Customer(get_client.chart_accnt)
             
 
-        ord_inv_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM public.purch_items where item_product= '+str(del_product_set.id)+';') 
+        ord_inv_items_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM test.purch_items where item_product= '+str(del_product_set.id)+';') 
         order_inv_items = db.session.execute(ord_inv_items_txt)
         for o_inv in order_inv_items:
             get_ord_invoice = TblOrder.query.get(int(str(o_inv.item_invoice).strip()))
@@ -647,7 +647,7 @@ def p_category_delete(id, userid):
             RefreshCOA_Customer.refresh_COA_Supplier(get_supplier.chart_accnt)
                 
 
-        stk_rtn_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM public.return_items where item_product= '+str(del_product_set.id)+';') 
+        stk_rtn_txt = text('SELECT DISTINCT ON (item_invoice) item_invoice, item_product FROM test.return_items where item_product= '+str(del_product_set.id)+';') 
         stk_rtn_inv_items = db.session.execute(stk_rtn_txt)
         for stk_inv in stk_rtn_inv_items:
             get_stk_invoice = TblStockRtn.query.get(int(str(stk_inv.item_invoice).strip()))

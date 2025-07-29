@@ -100,18 +100,18 @@ def sales_overall_index():
         for purch in cm_gross_purch:
             cm_gross_purch_val += float(purch.grand_total)
     elif((str(data['overallType']).strip()) == "week"):
-        cm_gross_sell_txt = text("SELECT * FROM public.tbl_invoice Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
+        cm_gross_sell_txt = text("SELECT * FROM test.tbl_invoice Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
         cm_gross_sell = db.session.execute(cm_gross_sell_txt)
-        cm_gross_purch_txt = text("SELECT * FROM public.tbl_order Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
+        cm_gross_purch_txt = text("SELECT * FROM test.tbl_order Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
         cm_gross_purch = db.session.execute(cm_gross_purch_txt)
         for sell in cm_gross_sell:
             cm_gross_total += float(sell.grand_total)
         for purch in cm_gross_purch:
             cm_gross_purch_val += float(purch.grand_total)       
     elif((str(data['overallType']).strip()) == "today"):
-        cm_gross_sell_txt = text("SELECT * FROM public.tbl_invoice Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
+        cm_gross_sell_txt = text("SELECT * FROM test.tbl_invoice Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
         cm_gross_sell = db.session.execute(cm_gross_sell_txt)
-        cm_gross_purch_txt = text("SELECT * FROM public.tbl_order Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
+        cm_gross_purch_txt = text("SELECT * FROM test.tbl_order Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
         cm_gross_purch = db.session.execute(cm_gross_purch_txt)
         for sell in cm_gross_sell:
             cm_gross_total += float(sell.grand_total)

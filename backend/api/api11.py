@@ -198,6 +198,7 @@ def update_manifest_set_update():
     manifest_goods_value.comm_per = str(data['per_comm'])
     manifest_goods_value.weight = str(data['G_Bweight'])
     manifest_goods_value.per_ton = str(data['G_BPerTon'])
+    manifest_goods_value.goods_vehicle_number =  str(data['G_BVehicleNum'])
     manifest_goods_value.freight = party_amt
     manifest_goods_value.wrt_4_per_freight = str(data['G_BWRT4Freight'])
     manifest_goods_value.commission = comm_amt

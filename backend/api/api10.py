@@ -87,12 +87,12 @@ def sales_dashboard_index(userid):
         gross_income_status = "high"
     else:
         gross_income_status = "low"
-    chart_of_suppl_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM public.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'supplier' GROUP BY id limit 10;") 
+    chart_of_suppl_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM test.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'supplier' GROUP BY id limit 10;") 
     chart_of_suppl = db.session.execute(chart_of_suppl_txt)
     chart_suppl_data = []
     for chart_suppl in chart_of_suppl:
         chart_suppl_data.append({"supplId":chart_suppl.id,"supplName":chart_suppl.accnt_name,"supplNetworth":chart_suppl.networth  })
-    chart_of_client_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM public.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'client' GROUP BY id limit 10;") 
+    chart_of_client_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM test.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'client' GROUP BY id limit 10;") 
     chart_of_client = db.session.execute(chart_of_client_txt)
     chart_client_data = []
     for chart_client in chart_of_client:
@@ -189,7 +189,7 @@ def ledger_cash_add_create():
         ledger_balance = last_balance - int(str(data['ac_amount']))
     if(data['ac_party_type'] == "party" or data['ac_party_type'] == "vehicle" or data['ac_party_type'] == "general" or data['ac_party_type'] == "commission"):
         if(data['ac_party_type'] == "party"):
-            party_ledg_data_txt = text("SELECT  sum(CAST(ledger_debit_amount AS DECIMAL(10,0))) as debit, sum(CAST(ledger_credit_amount AS DECIMAL(10,0))) as credit FROM public.ledger Where ledger_bill = '"+str(data['leg_inv_num']).strip()+"' and ledger_type ='"+str(data['ac_party_type']).strip()+"';") 
+            party_ledg_data_txt = text("SELECT  sum(CAST(ledger_debit_amount AS DECIMAL(10,0))) as debit, sum(CAST(ledger_credit_amount AS DECIMAL(10,0))) as credit FROM test.ledger Where ledger_bill = '"+str(data['leg_inv_num']).strip()+"' and ledger_type ='"+str(data['ac_party_type']).strip()+"';") 
             party_ledg_data = db.session.execute(party_ledg_data_txt)
             bal_debit = 0
             bal_credit = 0
@@ -220,7 +220,7 @@ def ledger_cash_add_create():
         sub_ledger_cash_result = db.session.execute(sadd_ledger_cash)
         db.session.commit()
     elif(data['ac_party_type'] == "supplier" or data['ac_party_type'] == "client" ):
-        party_ledg_data_txt = text("SELECT  sum(CAST(ledger_debit_amount AS DECIMAL(10,0))) as debit, sum(CAST(ledger_credit_amount AS DECIMAL(10,0))) as credit FROM public.ledger2 Where ledger_bill = '"+str(data['leg_inv_num']).strip()+"' and ledger_type ='"+str(data['ac_party_type']).strip()+"';") 
+        party_ledg_data_txt = text("SELECT  sum(CAST(ledger_debit_amount AS DECIMAL(10,0))) as debit, sum(CAST(ledger_credit_amount AS DECIMAL(10,0))) as credit FROM test.ledger2 Where ledger_bill = '"+str(data['leg_inv_num']).strip()+"' and ledger_type ='"+str(data['ac_party_type']).strip()+"';") 
         party_ledg_data = db.session.execute(party_ledg_data_txt)
         bal_debit = 0
         bal_credit = 0

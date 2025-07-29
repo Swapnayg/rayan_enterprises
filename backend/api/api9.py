@@ -37,9 +37,9 @@ def oils_dashboard_index(userid):
     veh_freight_count_status = 0
     comm_count_diff = 0
     comm_count_status = 0
-    cw_goods_txt = text("SELECT * FROM public.oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime <= '"+today+"'") 
+    cw_goods_txt = text("SELECT * FROM test.oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime <= '"+today+"'") 
     cw_goods = db.session.execute(cw_goods_txt)
-    lw_goods_txt = text("SELECT * FROM public.oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ lw_start_of_week +"' AND datetime <= '"+lw_today+"'") 
+    lw_goods_txt = text("SELECT * FROM test.oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ lw_start_of_week +"' AND datetime <= '"+lw_today+"'") 
     lw_goods = db.session.execute(lw_goods_txt)  
     
     cw_vehicle_txt = text("SELECT DISTINCT (vehicle) FROM oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime <= '"+today+"'") 
@@ -96,14 +96,14 @@ def oils_dashboard_index(userid):
         veh_count_status = "high"
     else:
         veh_count_status = "low"
-    chart_of_party_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM public.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'party' GROUP BY id limit 10;") 
+    chart_of_party_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM test.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'party' GROUP BY id limit 10;") 
     chart_of_party = db.session.execute(chart_of_party_txt)
     chart_party_data = []
     for chart_party in chart_of_party:
         get_Party = Party.query.filter(Party.chart_accnt == int(chart_party.id)).one()
         if(str(get_Party.type).strip() == "oil"):
             chart_party_data.append({"partyId":chart_party.id,"partyName":chart_party.accnt_name,"partyNetworth":chart_party.networth  })
-    chart_of_veh_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM public.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'vehicle' GROUP BY id limit 10;") 
+    chart_of_veh_txt = text("SELECT id,accnt_name,networth, MAX(networth) FROM test.chart_of_accounts Where userid = "+str(userid)+" AND account_mode = 'vehicle' GROUP BY id limit 10;") 
     chart_of_veh = db.session.execute(chart_of_veh_txt)
     chart_veh_data = []
     for chart_veh in chart_of_veh:

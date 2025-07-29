@@ -52,7 +52,7 @@ const CashBookDataTable = () => {
         $('#table_cashbook').DataTable().destroy();
       }
       $('#table_cashbook tbody').empty();
-      fetch('https://backend-55jj.onrender.com/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
+      fetch('http://127.0.0.1:5000/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
         res.json().then((jsdata) => {
           if(e.target.value.toString().trim()  =="general" || e.target.value.toString().trim()  =="commission" || e.target.value.toString().trim()  =="party"|| e.target.value.toString().trim()  =="vehicle")
           {
@@ -150,7 +150,7 @@ const CashBookDataTable = () => {
         setHidden(false);
         $("#bill_number").empty();
         $("#bill_number").append("<option value=''>Select Bill</option>");
-        fetch("https://backend-55jj.onrender.com/COA_data_bill", {
+        fetch("http://127.0.0.1:5000/COA_data_bill", {
           method: 'POST', 
           headers:{   'Accept': 'application/json',
                     'Content-Type': 'application/json'  }, 
@@ -170,7 +170,7 @@ const CashBookDataTable = () => {
 
     
     const loadOptions = (inputValue) =>{
-      return fetch("https://backend-55jj.onrender.com/COA_data_select",{
+      return fetch("http://127.0.0.1:5000/COA_data_select",{
         method: 'POST', 
         headers:{   'Accept': 'application/json',
                   'Content-Type': 'application/json'  }, 
@@ -197,10 +197,12 @@ const CashBookDataTable = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("fired");
     if(canSubmit)
     {  
       if($("#btncashsubmit").text().trim() == "Save")
       {
+        console.log("123");
         var sel_value = selectedOption.value.toString().trim().split("_Type_");
         var sel_id = sel_value[0];
         var sel_val = sel_value[1];
@@ -214,7 +216,7 @@ const CashBookDataTable = () => {
         {
           debit_amnt = amount;
         }
-        fetch('https://backend-55jj.onrender.com/add_cashbook_values', { 
+        fetch('http://127.0.0.1:5000/add_cashbook_values', { 
           method: 'POST', 
           headers: {   'Accept': 'application/json',
             'Content-Type': 'application/json'  }, 
@@ -248,7 +250,7 @@ const CashBookDataTable = () => {
         var row_id = $(this).attr("data-lable");
         var row_type = $(this).attr("data-type");
         console.log(bill_text)
-          fetch('https://backend-55jj.onrender.com/update_cashbook_values', { 
+          fetch('http://127.0.0.1:5000/update_cashbook_values', { 
               method: 'POST', 
               headers:{   'Accept': 'application/json',
                 'Content-Type': 'application/json'  },
@@ -290,7 +292,7 @@ const CashBookDataTable = () => {
             $('#table_cashbook').DataTable().destroy();
           }
           $('#table_cashbook tbody').empty();
-          fetch('https://backend-55jj.onrender.com/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
+          fetch('http://127.0.0.1:5000/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
             res.json().then((jsdata) => {
               for (let i = 0; i < jsdata.cashbook_data.length; i++) {
                 if(jsdata.cashbook_data[i].pay_start.toString().trim() != "started")
@@ -336,7 +338,7 @@ const CashBookDataTable = () => {
             $('#table_cashbook').DataTable().destroy();
           }
           $('#table_cashbook tbody').empty();
-          fetch('https://backend-55jj.onrender.com/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
+          fetch('http://127.0.0.1:5000/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
             res.json().then((jsdata) => {
               for (let i = 0; i < jsdata.cashbook_data.length; i++) {
                 if(jsdata.cashbook_data[i].pay_start.toString().trim() != "started")
@@ -437,7 +439,7 @@ const CashBookDataTable = () => {
             var t_row =  $(this).closest('tr').index();
             setId(row_id);
             var array_list =  JSON.parse($("#table_cashbook tbody tr:eq("+t_row+") td:eq(7)").find('span').text());
-            fetch('https://backend-55jj.onrender.com/cashbook_delete', { 
+            fetch('http://127.0.0.1:5000/cashbook_delete', { 
               method: 'POST', 
               headers:{   'Accept': 'application/json',
                         'Content-Type': 'application/json'  }, 
@@ -455,7 +457,7 @@ const CashBookDataTable = () => {
             loadJQueryAndDataTables()
               .then(($) => {
                 window.$ = window.jQuery = $;
-                fetch('https://backend-55jj.onrender.com/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
+                fetch('http://127.0.0.1:5000/cashbook_data'+'/'+localStorage.getItem('id')).then((res) =>
                   res.json().then((jsdata) => {
                     for (let i = 0; i < jsdata.cashbook_data.length; i++) {
                       if(jsdata.cashbook_data[i].pay_start.toString().trim() != "started")
@@ -624,6 +626,7 @@ const CashBookDataTable = () => {
         <div className="col-md-6 d-flex align-items-end gap-2">
           <button
             className="btn btn-primary"
+            id="btncashsubmit"
             onClick={handleSubmit}
             disabled={!canSubmit}
           >

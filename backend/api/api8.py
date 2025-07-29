@@ -226,14 +226,13 @@ def add_recc_invoice_create():
         db.session.commit()  
     return jsonify({"data":recc_inv_result.inserted_primary_key[0]})  
 
-    
 @api8.route('/add_manifest_goods', methods=['POST']) 
 def manifesto_create(): 
     data = request.get_json()
     party_amt = int(data['G_BFreight'])
     comm_amt = int(data['G_BComm'])
     userid = int(data['userid'])
-    sadd_goods_manifest = insert(GoodsNlc).values(bilty_no= data['G_BiltyNo'], b_date= data['G_BiltyDate'], vehicle = data['G_BVehicle'], loading_point = data['G_loading'],unloading_point = data['G_unloading'], parties= data['G_Bparty'],weight= data['G_Bweight'],per_ton= data['G_BPerTon'], freight= party_amt,wrt_4_per_freight=data['G_BWRT4Freight'], commission= comm_amt, other_cahrges= data['G_BOtherCharges'], vehicle_freight= data['G_BvehicleFreight'], vehicle_balance= data['G_BvehicleBal'], advance_to_vehicle= data['G_BvehicleAdvance'],bill_status = 'pending',paid_by=data['G_paid_Method'], goods_gst=data['Goods_GST'], userid = userid,  tax_per=data['per_wft'],  comm_per=data['per_comm'])
+    sadd_goods_manifest = insert(GoodsNlc).values(bilty_no= data['G_BiltyNo'], b_date= data['G_BiltyDate'], vehicle = data['G_BVehicle'], loading_point = data['G_loading'],unloading_point = data['G_unloading'], parties= data['G_Bparty'],weight= data['G_Bweight'],per_ton= data['G_BPerTon'], freight= party_amt,wrt_4_per_freight=data['G_BWRT4Freight'], commission= comm_amt, other_cahrges= data['G_BOtherCharges'], vehicle_freight= data['G_BvehicleFreight'], vehicle_balance= data['G_BvehicleBal'], advance_to_vehicle= data['G_BvehicleAdvance'],bill_status = 'pending',paid_by=data['G_paid_Method'], goods_gst=data['Goods_GST'], userid = userid,  tax_per=data['per_wft'],  comm_per=data['per_comm'],  goods_vehicle_number=data['G_BVehicleNum'])
     goods_manif_result = db.session.execute(sadd_goods_manifest)
     get_party = Party.query.get(int(str(data['G_Bparty'])))
     get_vehicle = Vehicles.query.get(int(str(data['G_BVehicle'])))

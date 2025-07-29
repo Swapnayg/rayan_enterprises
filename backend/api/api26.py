@@ -224,44 +224,44 @@ def main_overall_index():
         for purch in cm_gross_purch:
             cm_gross_purch_val += float(purch.grand_total)
     elif((str(data['overallType']).strip()) == "week"):
-        cm_gross_sell_txt = text("SELECT * FROM public.tbl_invoice Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
+        cm_gross_sell_txt = text("SELECT * FROM test.tbl_invoice Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
         cm_gross_sell = db.session.execute(cm_gross_sell_txt)
         for sell in cm_gross_sell:
             cm_gross_total += float(sell.grand_total)
-        cm_goods_sell_txt = text("SELECT * FROM public.goods_nlc Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
+        cm_goods_sell_txt = text("SELECT * FROM test.goods_nlc Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
         cm_goods_sell = db.session.execute(cm_goods_sell_txt)
         for c_good in cm_goods_sell:
             cm_goods_total += float(c_good.freight)
             cm_vehicle_total += float(c_good.vehicle_freight)
             cm_comm_total += float(c_good.commission)
-        cm_oils_sell_txt = text("SELECT * FROM public.oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
+        cm_oils_sell_txt = text("SELECT * FROM test.oil_pso Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
         cm_oils_sell = db.session.execute(cm_oils_sell_txt)
         for c_oil in cm_oils_sell:
             cm_oils_total += float(c_oil.freight)
             cm_oils_veh_total += float(c_good.vehicle_freight)
             cm_oils_comm_total += float(c_good.commission)
-        cm_gross_purch_txt = text("SELECT * FROM public.tbl_order Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
+        cm_gross_purch_txt = text("SELECT * FROM test.tbl_order Where userid = "+str(userid)+" AND datetime >= '"+ start_of_week +"' AND datetime < '"+today+"'") 
         cm_gross_purch = db.session.execute(cm_gross_purch_txt)
         for purch in cm_gross_purch:
             cm_gross_purch_val += float(purch.grand_total)
     elif((str(data['overallType']).strip()) == "today"):
-        cm_gross_sell_txt = text("SELECT * FROM public.tbl_invoice Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
+        cm_gross_sell_txt = text("SELECT * FROM test.tbl_invoice Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
         cm_gross_sell = db.session.execute(cm_gross_sell_txt)
         for sell in cm_gross_sell:
             cm_gross_total += float(sell.grand_total)
-        cm_goods_sell_txt = text("SELECT * FROM public.goods_nlc Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
+        cm_goods_sell_txt = text("SELECT * FROM test.goods_nlc Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
         cm_goods_sell = db.session.execute(cm_goods_sell_txt)
         for c_good in cm_goods_sell:
             cm_goods_total += float(c_good.freight)
             cm_vehicle_total += float(c_good.vehicle_freight)
             cm_comm_total += float(c_good.commission)
-        cm_oils_sell_txt = text("SELECT * FROM public.oil_pso Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
+        cm_oils_sell_txt = text("SELECT * FROM test.oil_pso Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
         cm_oils_sell = db.session.execute(cm_oils_sell_txt)
         for c_oil in cm_oils_sell:
             cm_oils_total += float(c_oil.freight)
             cm_oils_veh_total += float(c_good.vehicle_freight)
             cm_oils_comm_total += float(c_good.commission)
-        cm_gross_purch_txt = text("SELECT * FROM public.tbl_order Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
+        cm_gross_purch_txt = text("SELECT * FROM test.tbl_order Where userid = "+str(userid)+" AND datetime = '"+ today +"'") 
         cm_gross_purch = db.session.execute(cm_gross_purch_txt)
         for purch in cm_gross_purch:
             cm_gross_purch_val += float(purch.grand_total)
